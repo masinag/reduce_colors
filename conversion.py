@@ -139,7 +139,7 @@ def simplify_image(image, colors, mode = MODE_HSV):
     parametro. La modalità di confronto di default è la distanza nello spazio
     HSV ma può essere modificata tramite il parametro mode."""
 
-    image = imread("images/%s" % image)
+    image = imread(image)
 
     if mode == MODE_DELTAECIE2000:
         return simplify_image_LAB(image, colors)

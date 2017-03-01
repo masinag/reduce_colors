@@ -6,7 +6,7 @@ if __name__ == '__main__':
     from conversion import simplify_image, MODE_DELTAECIE2000, MODE_RGB, MODE_HSV, modes
     from time import time
     from cv2 import imwrite
-    from os.path import exists
+    from os.path import exists, basename
     from os import makedirs
 
 
@@ -31,25 +31,15 @@ if __name__ == '__main__':
                     [  0,  0,  0]],# black
                     uint8)
 
-    clean_name, extension = args.image.split(".")
+    clean_name, extension = basename(args.image).split(".")
     if not exists("results"):
         makedirs("results")
     if not exists("results/%s" % clean_name):
         makedirs("results/%s" % clean_name)
 
-    # provo a semplificare l'immagine in divese modalità
-    modes = {"delta_e_cie2000" : MODE_DELTAECIE2000,
-             "rgb" : MODE_RGB,
-             "hsv" : MODE_HSV}
-
-    # modes = {"hsv" : MODE_HSV}
-
-    for key, value in modes.items():
-        t = time()
-        im = simplify_image(args.image, colors, value)
-        if im is False:
-            print "%d non è una modalità valida" % value
-        else:
-            imwrite("results/%s/%s_%s.%s" %(clean_name, clean_name, key, extension), im)
-            print "%s Fatto" % key
-            print "Tempo: %.3f" % (time() - t)
+    names = {0:"deltaecie2000", 1:"rgb", 2:"hsv"}
+    im = simplify_image(args.image, colors, args.mode)
+    if im is False:
+        print "%d non è una modalità valida" % value
+    else:
+	imwrite("results/%s/%s_%s.%s" %(clean_name, clean_name, names[args.mode], extension), im)
