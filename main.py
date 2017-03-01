@@ -3,7 +3,7 @@
 if __name__ == '__main__':
     from argparse import ArgumentParser
     from numpy import array, uint8
-    from conversion import simplify_image, MODE_DELTAECIE2000, MODE_RGB, MODE_HSV
+    from conversion import simplify_image, MODE_DELTAECIE2000, MODE_RGB, MODE_HSV, modes
     from time import time
     from cv2 import imwrite
     from os.path import exists
@@ -13,9 +13,12 @@ if __name__ == '__main__':
     parser = ArgumentParser(description = "Riduzione di un'immagine in N colori")
     parser.add_argument("-i", "--image", type = str, required = True, help="Immagine di input")
     parser.add_argument('-f', '--file', type=str, help="File con i colori da estrapolare")
-    parser.add_argument("-m", "--mode", type = conversion.modes, default = MODE_HSV,
+    parser.add_argument("-m", "--mode", type = modes, default = MODE_HSV,
     help="""
-        Modalità di conversione: i valori possibili sono 0, 1 o 2
+        Modalità di conversione: i valori possibili sono:
+	* 0 per la conversione utilizzando l'algoritmo DELTA E CIE2000.
+	* 1 per la conversione riconducendo ogni colore a quello più vicino nello spazio RGB.
+	* 2 per la conversione riconducendo ogni colore a quello più vicino nello spazio HSV.
     """)
     # parser.add_argument('-r', '--resize', type=int, help = "Ridimesionamento dell'immagine")
 
