@@ -28,20 +28,21 @@ usage: main.py [-h] -i IMAGE [-f FILE] [-m MODE]
 
 Riduzione di un'immagine in N colori
 
+positional arguments:
+
+  image                 Immagine di input
+
 optional arguments:
   -h, --help            show this help message and exit
 
-  -i IMAGE, --image IMAGE Immagine di input
-
-  -f FILE, --file FILE  File con i colori da estrapolare
+  -f FILE, --file FILE  File con i colori da estrapolare (default: colors.txt)
 
   -m MODE, --mode MODE  Modalità di conversione: i valori possibili sono:
 
-			* 0 per la conversione utilizzando l'algoritmo DELTA E CIE2000.
+                        * 0 per la conversione utilizzando l'algoritmo DELTA E CIE2000.
 
-			* 1 per la conversione riconducendo ogni colore a quello più vicino
-			  nello spazio RGB.
+                        * 1 per la conversione riconducendo ogni colore a quello più vicino nello spazio RGB.
 
-			* 2 per la conversione riconducendo ogni colore a quello più
-                          vicino nello spazio HSV.
-													
+                        * 2 per la conversione riconducendo ogni colore a quello più vicino nello spazio HSV.
+
+                         (default: 2)

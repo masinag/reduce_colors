@@ -7,7 +7,7 @@ from colormath.color_objects import LabColor, sRGBColor
 from colormath.color_conversions import convert_color
 from colormath.color_diff import delta_e_cie2000
 from time import time
-from imutils import resize
+# from imutils import resize
 from argparse import ArgumentTypeError
 
 # modalità in cui è possibile semplificare un'immagine
