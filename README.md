@@ -1,5 +1,5 @@
 # REDUCE COLORS
-Progetto che permette di semplificare un'immagine riconducendo ogni colore 
+Progetto che permette di semplificare un'immagine riconducendo ogni colore
 a quello più simile tra quelli dati.
 
 #INSTALLAZIONE
@@ -9,6 +9,7 @@ Requisiti:
 	* cv2
 	* numpy
 	* colormath
+
 # STRUTTURA
 La directory principale contiene:
 * un file "main.py" che se eseguito mostra un esempio di funzionamento del progetto.
@@ -29,12 +30,18 @@ Riduzione di un'immagine in N colori
 
 optional arguments:
   -h, --help            show this help message and exit
-  -i IMAGE, --image IMAGE
-                        Immagine di input
+
+  -i IMAGE, --image IMAGE Immagine di input
+
   -f FILE, --file FILE  File con i colori da estrapolare
-  -m MODE, --mode MODE  Modalità di conversione: i valori possibili sono: 
+
+  -m MODE, --mode MODE  Modalità di conversione: i valori possibili sono:
+
 			* 0 per la conversione utilizzando l'algoritmo DELTA E CIE2000.
-			* 1 per la conversione riconducendo ogni colore a quello più vicino 
+
+			* 1 per la conversione riconducendo ogni colore a quello più vicino
 			  nello spazio RGB.
+
 			* 2 per la conversione riconducendo ogni colore a quello più
                           vicino nello spazio HSV.
+													
