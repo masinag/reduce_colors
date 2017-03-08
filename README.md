@@ -24,7 +24,7 @@ La directory principale contiene:
 # ESEMPIO DI USO
 Risultato del comando "python main.py --help":
 
-'''
+```
 usage: main.py [-h] -i IMAGE [-f FILE] [-m MODE]
 
 Riduzione di un'immagine in N colori
@@ -47,4 +47,4 @@ optional arguments:
                         * 2 per la conversione riconducendo ogni colore a quello più vicino nello spazio HSV.
 
                          (default: 2)
-'''
+```
