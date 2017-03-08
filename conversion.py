@@ -21,6 +21,13 @@ def modes(mode):
         raise argparse.ArgumentTypeError("%s " % n)
     return mode
 
+def read_colors(file):
+    s = list()
+    with open(file) as f:
+        for r in f:
+            rr = r.replace("\n", "")
+            s.append(rr.split(","))
+    return s
 def _get_value(pixel):
     """Restituisce un intero in base 10 a partire da un pixel dato."""
     return pixel.item(0)*65536 + pixel.item(1)*256 + pixel.item(2)

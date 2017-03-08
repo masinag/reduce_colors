@@ -3,7 +3,7 @@
 if __name__ == '__main__':
     from argparse import ArgumentParser
     from numpy import array, uint8
-    from conversion import simplify_image, MODE_DELTAECIE2000, MODE_RGB, MODE_HSV, modes
+    from conversion import simplify_image, MODE_DELTAECIE2000, MODE_RGB, MODE_HSV, modes, read_colors
     from time import time
     from cv2 import imwrite
     from os.path import exists, basename
@@ -12,7 +12,7 @@ if __name__ == '__main__':
 
     parser = ArgumentParser(description = "Riduzione di un'immagine in N colori")
     parser.add_argument("-i", "--image", type = str, required = True, help="Immagine di input")
-    parser.add_argument('-f', '--file', type=str, help="File con i colori da estrapolare")
+    parser.add_argument('-f', '--file', type=str, help="File con i colori da estrapolare", default="colors.txt")
     parser.add_argument("-m", "--mode", type = modes, default = MODE_HSV,
     help="""
         Modalità di conversione: i valori possibili sono:
@@ -24,12 +24,7 @@ if __name__ == '__main__':
 
     args = parser.parse_args()
 
-    colors = array([[255,  0,  0], #red
-                    [  0,255,  0], #green
-                    [  0,  0,255], #blue
-                    [255,255,255], #white
-                    [  0,  0,  0]],# black
-                    uint8)
+    colors = array(read_colors(args.file), uint8)
 
     clean_name, extension = basename(args.image).split(".")
     if not exists("results"):
